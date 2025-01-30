@@ -2,36 +2,35 @@
 import { useState, useRef, useEffect } from "react";
 import { Checkbox } from "./ui/checkbox";
 import { Button } from "./ui/button";
+import { IoIosArrowUp } from "react-icons/io";
 
 const PlayerCard = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+  const [selectedOption, setSelectedOption] = useState(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Escape") {
-      setIsOpen(false);
-    }
-  };
+  // const handleKeyDown = () => {
+  //   setIsOpen(false);
+  // };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setIsOpen(false);
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
   return (
     <div className="relative mt-12 w-72 max-w-full" ref={dropdownRef}>
       <Button
         type="button"
-        className="flex w-full items-center justify-between rounded-[10px] bg-zinc-900 px-4 py-2.5 text-sm"
+        className="flex w-full items-center justify-between rounded-[10px] bg-zinc-800/100 px-4 py-2.5 text-sm"
         onClick={() => setIsOpen(!isOpen)}
-        onKeyDown={handleKeyDown}
+        // onClick={handleKeyDown}
       >
         <span className="font-semibold">
           {selectedOption || "Players Cards"}
@@ -41,7 +40,7 @@ const PlayerCard = () => {
             isOpen ? "rotate-180" : ""
           }`}
         >
-          ▲
+          <IoIosArrowUp />
         </span>
       </Button>
 
