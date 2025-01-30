@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import dummy from "../../../public/dummy.svg";
-import nftOne from "../../../public/nft-img.avif";
-import nfttwo from "../../../public/nft-2.avif";
+import nftOne from "../../../public/nft-img.jpg";
+import nfttwo from "../../../public/nft-2.jpg";
 import visa from "../../../public/visa.svg";
 import mastercard from "../../../public/master-card.svg";
 import paypal from "../../../public/paypal.svg";
@@ -18,9 +18,8 @@ import Player from "@/components/Player";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const page = () => {
+const Page = () => {
   const [activeMainTab, setActiveMainTab] = useState("Buy Cards");
   const [activeSportTab, setActiveSportTab] = useState("Football");
   const [activeMarketTab, setActiveMarketTab] = useState("MarketPlace");
@@ -364,4 +363,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

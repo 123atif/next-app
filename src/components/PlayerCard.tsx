@@ -1,13 +1,13 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Checkbox } from "./ui/checkbox";
 import { Button } from "./ui/button";
 import { IoIosArrowUp } from "react-icons/io";
 
 const PlayerCard = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [selectedOption] = useState(null); //setSelectedOption
+  // const dropdownRef = useRef<HTMLDivElement>(null);
 
   // const handleKeyDown = () => {
   //   setIsOpen(false);
@@ -25,7 +25,8 @@ const PlayerCard = () => {
   // }, []);
 
   return (
-    <div className="relative mt-12 w-72 max-w-full" ref={dropdownRef}>
+    <div className="relative mt-12 w-72 max-w-full">
+      {/* ref={dropdownRef} add in thet top div if needed */}
       <Button
         type="button"
         className="flex w-full items-center justify-between rounded-[10px] bg-zinc-800/100 px-4 py-2.5 text-sm"

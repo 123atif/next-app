@@ -6,7 +6,7 @@ import { IoIosArrowUp } from "react-icons/io";
 
 const Pricing = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption] = useState(null); ////setSelectedOption
   // const dropdownRef = useRef<HTMLDivElement>(null);
 
   // const handleKeyDown = (e) => {
