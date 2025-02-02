@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { Slider } from "@/components/ui/slider";
+import { Checkbox } from "../../../components/ui/checkbox";
+import { Button } from "../../../components/ui/button";
 import { IoIosArrowUp } from "react-icons/io";
 
-const Position = () => {
+const TeamCardsFilter = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption] = useState(null); //setSelectedOption
   // const dropdownRef = useRef<HTMLDivElement>(null);
@@ -35,7 +35,7 @@ const Position = () => {
         onClick={() => setIsOpen(!isOpen)}
         // onKeyDown={handleKeyDown}
       >
-        <span className="font-semibold">{selectedOption || " Position"}</span>
+        <span className="font-semibold">{selectedOption || "Team Cards"}</span>
         <span
           className={`transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
@@ -46,12 +46,33 @@ const Position = () => {
       </Button>
 
       {isOpen && (
-        <div className="m-3">
-          <h3 className="font-bold mb-2">Price Range</h3>
-          <Slider defaultValue={[50]} max={5000} step={1} className="my-4" />
-          <div className="flex justify-between text-sm">
-            <span>$50</span>
-            <span>$5000</span>
+        <div className="flex flex-col gap-4 m-6 ">
+          <div className="flex items-center space-x-3">
+            <Checkbox id="diamond" />
+            <label
+              htmlFor="diamond"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Diamond
+            </label>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Checkbox id="platinum" />
+            <label
+              htmlFor="platinum"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Platinum
+            </label>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Checkbox id="gold" />
+            <label
+              htmlFor="gold"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Gold
+            </label>
           </div>
         </div>
       )}
@@ -59,4 +80,4 @@ const Position = () => {
   );
 };
 
-export default Position;
+export default TeamCardsFilter;

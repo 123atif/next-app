@@ -109,22 +109,22 @@ const Page = () => {
       </div>
 
       {/* Bottom Navigation for Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-zinc-700 rounded-[100px] mb-1 w-[95%] m-auto z-50">
-        <div className="flex justify-around p-3 h-[14vh]">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-zinc-700 rounded-[100px] mb-1 w-[95%] m-auto">
+        <div className="flex justify-around p-3">
           <div className="flex flex-col items-center">
-            <IoHomeOutline className="h-6 w-6" />
+            <IoHomeOutline className="h-5 w-5" />
             <span className="text-xs mt-1">Home</span>
           </div>
           <div className="flex flex-col items-center text-yellow-400">
-            <IoMdGrid className="h-6 w-6" />
+            <IoMdGrid className="h-5 w-5" />
             <span className="text-xs mt-1">Modules</span>
           </div>
           <div className="flex flex-col items-center">
-            <IoWalletOutline className="h-6 w-6" />
+            <IoWalletOutline className="h-5 w-5" />
             <span className="text-xs mt-1">Wallet</span>
           </div>
           <div className="flex flex-col items-center">
-            <FaUser className="h-6 w-6" />
+            <FaUser className="h-5 w-5" />
             <span className="text-xs mt-1">Profile</span>
           </div>
         </div>

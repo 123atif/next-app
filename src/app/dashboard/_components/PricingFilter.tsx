@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../../../components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { IoIosArrowUp } from "react-icons/io";
 
-const Pricing = () => {
+const PricingFilter = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption] = useState(null); ////setSelectedOption
   // const dropdownRef = useRef<HTMLDivElement>(null);
@@ -64,4 +64,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default PricingFilter;

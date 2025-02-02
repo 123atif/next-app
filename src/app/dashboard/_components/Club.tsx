@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
-import { Button } from "./ui/button";
 import { Slider } from "@/components/ui/slider";
 import { IoIosArrowUp } from "react-icons/io";
-
+import { Button } from "./../../../components/ui/button";
 const Club = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption] = useState(null); //setSelectedOption
@@ -44,7 +43,6 @@ const Club = () => {
           <IoIosArrowUp />
         </span>
       </Button>
-
       {isOpen && (
         <div className="m-3">
           <h3 className="font-bold mb-2">Price Range</h3>

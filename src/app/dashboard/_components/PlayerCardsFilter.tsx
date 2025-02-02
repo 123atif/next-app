@@ -1,18 +1,16 @@
 "use client";
 import { useState } from "react";
-import { Checkbox } from "./ui/checkbox";
-import { Button } from "./ui/button";
+import { Checkbox } from "../../../components/ui/checkbox";
+import { Button } from "../../../components/ui/button";
 import { IoIosArrowUp } from "react-icons/io";
 
-const TeamCard = () => {
+const PlayerCardsFilter = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption] = useState(null); //setSelectedOption
   // const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // const handleKeyDown = (e) => {
-  //   if (e.key === "Escape") {
-  //     setIsOpen(false);
-  //   }
+  // const handleKeyDown = () => {
+  //   setIsOpen(false);
   // };
 
   // useEffect(() => {
@@ -33,9 +31,11 @@ const TeamCard = () => {
         type="button"
         className="flex w-full items-center justify-between rounded-[10px] bg-zinc-800/100 px-4 py-2.5 text-sm"
         onClick={() => setIsOpen(!isOpen)}
-        // onKeyDown={handleKeyDown}
+        // onClick={handleKeyDown}
       >
-        <span className="font-semibold">{selectedOption || "Team Cards"}</span>
+        <span className="font-semibold">
+          {selectedOption || "Players Cards"}
+        </span>
         <span
           className={`transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
@@ -74,10 +74,28 @@ const TeamCard = () => {
               Gold
             </label>
           </div>
+          <div className="flex items-center space-x-3">
+            <Checkbox id="silver" />
+            <label
+              htmlFor="silver"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Silver
+            </label>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Checkbox id="bronze" />
+            <label
+              htmlFor="bronze"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Bronze
+            </label>
+          </div>
         </div>
       )}
     </div>
   );
 };
 
-export default TeamCard;
+export default PlayerCardsFilter;
