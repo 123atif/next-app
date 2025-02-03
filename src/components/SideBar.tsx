@@ -10,6 +10,7 @@ import { RiNftLine } from "react-icons/ri";
 import { LiaGiftsSolid } from "react-icons/lia";
 import { RiUserCommunityFill } from "react-icons/ri";
 import { IoWalletOutline } from "react-icons/io5";
+import { Button } from "./ui/button";
 
 interface ModuleType {
   id: string;
@@ -81,7 +82,9 @@ const SideBar = () => {
     }, 2000);
   };
 
+  // Reset isNavigating state when the component mounts or the page is reloaded
   useEffect(() => {
+    setIsNavigating(false); // Reset the state
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
@@ -99,7 +102,11 @@ const SideBar = () => {
                   selectedModule.id === module.id
                     ? "text-[#FFD700] shadow-lg"
                     : "hover:bg-gray-900"
-                } ${isNavigating ? "opacity-75 cursor-not-allowed" : ""}`}
+                } ${
+                  isNavigating
+                    ? "opacity-75 cursor-not-allowed"
+                    : "cursor-pointer"
+                }`}
               >
                 <span className="text-xl">{module.icon}</span>
                 <span className="flex-1 text-left font-medium">
@@ -108,6 +115,11 @@ const SideBar = () => {
               </a>
             </Link>
           ))}
+          <div className="space-y-4 p-4">
+            <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
+              White Paper
+            </Button>
+          </div>
         </div>
 
         {/* Right Content Area */}

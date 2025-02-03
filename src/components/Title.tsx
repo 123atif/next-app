@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface TitleProps {
   text: string;
+  className?: string;
 }
 
-const Title: React.FC<TitleProps> = ({ text }) => {
+const Title: React.FC<TitleProps> = ({ text, className }) => {
   return (
     <AnimatePresence mode="wait">
       <motion.h1
@@ -15,7 +16,9 @@ const Title: React.FC<TitleProps> = ({ text }) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.5 }}
-        className="text-4xl font-bold"
+        className={`text-4xl font-roboto-bold text-[#FFD700] ${
+          className || ""
+        }`}
       >
         {text}
       </motion.h1>

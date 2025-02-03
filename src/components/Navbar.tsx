@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/logo-1.svg";
+// import logo from "../../public/logo-1.svg";
+import logo from "../../public/logo-2.svg";
+
 import menu from "../../public/menu.svg";
 import { MobileMenuroutes, routes } from "@/data";
 import { Button } from "./ui/button";
@@ -33,7 +35,9 @@ const Navbar = () => {
   return (
     <nav className={navbarBgClass}>
       <div className="mx-auto flex items-center justify-between p-4">
-        <Image src={logo} alt="logo" width={50} height={50} />
+        <Link href="/">
+          <Image src={logo} alt="logo" width={150} height={150} />
+        </Link>
         <Image
           src={menu}
           alt="menu"
@@ -62,9 +66,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <Button className="bg-white text-black hover:bg-gray-500 duration-300 hidden md:block">
-          White Paper
-        </Button>
       </div>
 
       {/* Mobile Menu */}
@@ -80,7 +81,9 @@ const Navbar = () => {
         `}
       >
         <div className="p-4 flex justify-between">
-          <Image src={logo} alt="logo" width={50} height={50} />
+          <Link href="/">
+            <Image src={logo} alt="logo" width={150} height={150} />
+          </Link>
           <Button
             onClick={toggleMenu}
             className="text-xl font-bold p-2 hover:text-yellow-500"
@@ -116,11 +119,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className="space-y-4 p-4">
-          <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
-            White Paper
-          </Button>
-        </div>
       </div>
 
       {isOpen && (

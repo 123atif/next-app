@@ -16,6 +16,9 @@ export default {
           end: "#0B0D10", // Deep black
         },
       },
+      fontFamily: {
+        "roboto-bold": ["var(--font-roboto-bold)", "sans-serif"],
+      },
 
       backgroundImage: {
         "blue-gradient": "linear-gradient(to bottom, #1C1F4A, #0B0D10)",
