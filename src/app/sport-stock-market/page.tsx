@@ -22,8 +22,8 @@ const page = () => {
           className="text-4xl font-roboto-bold text-[#FFD700]"
         >
           <div className="p-2 flex flex-col xl:flex-row items-center justify-center gap-8">
-            <Image src={iphoneone} alt="" className="" />
-            <Image src={iphonetwo} alt="" className="" />
+            <Image src={iphoneone} alt="" className="max-h-[25rem]" />
+            <Image src={iphonetwo} alt="" className="max-h-[25rem]" />
           </div>
         </motion.h1>
       </AnimatePresence>
