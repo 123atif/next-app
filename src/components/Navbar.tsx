@@ -2,19 +2,15 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import logo from "../../public/logo-1.svg";
 import logo from "../../public/logo-2.svg";
-
 import menu from "../../public/menu.svg";
 import { MobileMenuroutes, routes } from "@/data";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // Default activeTab set to "/home-page"
-  const [activeTab, setActiveTab] = useState("/home-page");
+  const [activeTab, setActiveTab] = useState("/");
 
-  // Determine active route on mount (client side)
   useEffect(() => {
     if (typeof window !== "undefined") {
       setActiveTab(window.location.pathname);
@@ -24,12 +20,8 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  // Determine if we're on the home page.
-  // Adjust this condition based on your home route ("/" or "/home-page")
   const isHomePage = activeTab === "/" || activeTab === "/home-page";
 
-  // Set the appropriate background classes based on the route.
   const navbarBgClass = isHomePage ? "bg-blue-gradient" : "bg-[#0B0D10]";
 
   return (

@@ -4,13 +4,13 @@ import { IoMdGrid } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 
 export const routes = [
-  { name: "Home", path: "/home-page" },
+  { name: "Home", path: "/" },
   { name: "Modules", path: "/modules-page" },
   { name: "Tokenomics", path: "/tokenomics" },
   { name: "Contact Us", path: "/contact-us" },
 ];
 export const MobileMenuroutes = [
-  { icon: <IoHomeOutline />, name: "Home", path: "/home-page" },
+  { icon: <IoHomeOutline />, name: "Home", path: "/" },
   { icon: <IoMdGrid />, name: "Modules", path: "/modules-page" },
   { icon: <SiBasicattentiontoken />, name: "Tokenomics", path: "/tokenomics" },
   { icon: <RiContactsBook3Fill />, name: "Contact Us", path: "/contact-us" },

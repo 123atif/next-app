@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Title from "@/components/Title";
 import player1 from "../../../public/player-1.png";
