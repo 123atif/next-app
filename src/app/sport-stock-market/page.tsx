@@ -2,8 +2,8 @@
 import Title from "@/components/Title";
 import Image from "next/image";
 import React from "react";
-import iphoneone from "../../../public/iphone-1.svg";
-import iphonetwo from "../../../public/iphone-2.svg";
+import iphoneone from "../../../public/svg/mod1.svg";
+import iphonetwo from "../../../public/svg/mod2.svg";
 import { motion, AnimatePresence } from "framer-motion";
 
 const page = () => {
@@ -21,7 +21,7 @@ const page = () => {
           transition={{ duration: 0.5 }}
           className="text-4xl font-roboto-bold text-[#FFD700]"
         >
-          <div className="p-2 flex flex-col xl:flex-row items-center justify-center gap-8">
+          <div className="p-2 flex flex-col md:flex-row items-center justify-center gap-8">
             <Image src={iphoneone} alt="" className="max-h-[25rem]" />
             <Image src={iphonetwo} alt="" className="max-h-[25rem]" />
           </div>

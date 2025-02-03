@@ -22,12 +22,12 @@ export default function Home() {
           </div>
           <div className="relative w-full max-w-md mt-6 mx-auto">
             <Image
-              src="/iphone.svg"
+              src="/svg/iphone.svg"
               alt="iPhone"
-              className="w-full h-auto"
+              className="w-full h-auto max-w-36 md:max-w-48 mx-auto"
               priority
-              width={300}
-              height={300}
+              width={140}
+              height={140}
             />
           </div>
         </div>
