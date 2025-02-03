@@ -11,7 +11,14 @@ import { LiaGiftsSolid } from "react-icons/lia";
 import { RiUserCommunityFill } from "react-icons/ri";
 import { IoWalletOutline } from "react-icons/io5";
 
-const modules = [
+interface ModuleType {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const modules: ModuleType[] = [
   {
     id: "/sport-stock-market",
     title: "Sports Stock Market",
@@ -51,12 +58,14 @@ const modules = [
 ];
 
 const SideBar = () => {
-  const [selectedModule, setSelectedModule] = useState<Module>(modules[0]);
+  const [selectedModule, setSelectedModule] = useState<ModuleType>(modules[0]);
   const [isNavigating, setIsNavigating] = useState(false);
-  // In the browser, setTimeout returns a number
   const timeoutRef = useRef<number | null>(null);
 
-  const handleModuleSelect = (module, e) => {
+  const handleModuleSelect = (
+    module: ModuleType,
+    e: React.MouseEvent<HTMLAnchorElement>
+  ) => {
     e.preventDefault();
     if (isNavigating) return;
 
