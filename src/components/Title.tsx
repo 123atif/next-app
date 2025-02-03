@@ -2,7 +2,11 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Title = ({ text }) => {
+interface TitleProps {
+  text: string;
+}
+
+const Title: React.FC<TitleProps> = ({ text }) => {
   return (
     <AnimatePresence mode="wait">
       <motion.h1

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,13 +15,13 @@ const modules = [
   {
     id: "/sport-stock-market",
     title: "Sports Stock Market",
-    description: "Decentralized Sports Trading & Dividends”",
+    description: "Decentralized Sports Trading & Dividends",
     icon: <AiOutlineStock />,
   },
   {
     id: "/nft-fantasy",
     title: "NFT Fantasy Game",
-    description: "Play, Compete & Win with Digital Sports Cards”",
+    description: "Play, Compete & Win with Digital Sports Cards",
     icon: <FaFantasyFlightGames />,
   },
   {
@@ -50,9 +51,10 @@ const modules = [
 ];
 
 const SideBar = () => {
-  const [selectedModule, setSelectedModule] = useState(modules[0]);
+  const [selectedModule, setSelectedModule] = useState<Module>(modules[0]);
   const [isNavigating, setIsNavigating] = useState(false);
-  const timeoutRef = useRef(null);
+  // In the browser, setTimeout returns a number
+  const timeoutRef = useRef<number | null>(null);
 
   const handleModuleSelect = (module, e) => {
     e.preventDefault();
@@ -65,7 +67,7 @@ const SideBar = () => {
     setSelectedModule(module);
     setIsNavigating(true);
 
-    timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       window.location.href = module.id;
     }, 2000);
   };
@@ -87,7 +89,7 @@ const SideBar = () => {
                 className={`w-full flex items-center space-x-2 p-4 rounded-lg transition-all duration-300 ${
                   selectedModule.id === module.id
                     ? "text-[#FFD700] shadow-lg"
-                    : " hover:bg-gray-900"
+                    : "hover:bg-gray-900"
                 } ${isNavigating ? "opacity-75 cursor-not-allowed" : ""}`}
               >
                 <span className="text-xl">{module.icon}</span>
@@ -125,7 +127,7 @@ const SideBar = () => {
               >
                 {selectedModule.title}
               </motion.h2>
-              <motion.p className=" text-lg max-w-2xl font-serif" layout>
+              <motion.p className="text-lg max-w-2xl font-serif" layout>
                 {selectedModule.description}
               </motion.p>
             </motion.div>
