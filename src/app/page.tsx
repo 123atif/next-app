@@ -1,8 +1,9 @@
 "use client";
 import BackgroundVideo from "@/components/BackgroundVideo";
-import MarqueeBrands from "@/components/Marquee";
+// import MarqueeBrands from "@/components/Marquee";
 import Navbar from "@/components/Navbar";
-
+// import Image from "next/image";
+import SideBar from "@/components/SideBar";
 export default function Home() {
   return (
     <>
@@ -14,14 +15,15 @@ export default function Home() {
         <div className="absolute inset-0">
           <BackgroundVideo />
         </div>
-        <div className="absolute text-white text-[15px] text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-glow z-10 px-4 md:text-4xl sm:text-2xl">
+        <div className="font-serif font-medium absolute text-white text-[15px] text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-glow z-10 px-4 md:text-4xl sm:text-2xl">
           A Multimodule Sports Ecosystem Powered by SGZELN
         </div>
       </div>
 
-      <div className="relative ">
+      {/* <div className="relative ">
         <MarqueeBrands />
-      </div>
+      </div> */}
+      <SideBar />
     </>
   );
 }

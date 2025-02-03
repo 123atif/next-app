@@ -9,8 +9,10 @@ import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  // Default activeTab set to "/home-page"
   const [activeTab, setActiveTab] = useState("/home-page");
 
+  // Determine active route on mount (client side)
   useEffect(() => {
     if (typeof window !== "undefined") {
       setActiveTab(window.location.pathname);
@@ -21,8 +23,15 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // Determine if we're on the home page.
+  // Adjust this condition based on your home route ("/" or "/home-page")
+  const isHomePage = activeTab === "/" || activeTab === "/home-page";
+
+  // Set the appropriate background classes based on the route.
+  const navbarBgClass = isHomePage ? "bg-blue-gradient" : "bg-[#0B0D10]";
+
   return (
-    <nav className="bg-blue-gradient">
+    <nav className={navbarBgClass}>
       <div className="mx-auto flex items-center justify-between p-4">
         <Image src={logo} alt="logo" width={50} height={50} />
         <Image
@@ -53,25 +62,28 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        <Button className="bg-white text-black hover:bg-gray-500 duration-300 hidden md:block">
+          White Paper
+        </Button>
       </div>
 
       {/* Mobile Menu */}
       <div
         className={`
-        sm:hidden
-        fixed right-0 top-0 h-full w-64
-        bg-blue-gradient
-        transform transition-transform duration-300 ease-in-out
-        ${isOpen ? "translate-x-0" : "translate-x-full"}
-        z-50
-        shadow-2xl
-      `}
+          sm:hidden
+          fixed right-0 top-0 h-full w-64
+          ${navbarBgClass}
+          transform transition-transform duration-300 ease-in-out
+          ${isOpen ? "translate-x-0" : "translate-x-full"}
+          z-50
+          shadow-2xl
+        `}
       >
         <div className="p-4 flex justify-between">
           <Image src={logo} alt="logo" width={50} height={50} />
           <Button
             onClick={toggleMenu}
-            className=" text-xl font-bold p-2 hover:text-yellow-500"
+            className="text-xl font-bold p-2 hover:text-yellow-500"
           >
             x
           </Button>
@@ -104,6 +116,11 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        <div className="space-y-4 p-4">
+          <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
+            White Paper
+          </Button>
+        </div>
       </div>
 
       {isOpen && (
