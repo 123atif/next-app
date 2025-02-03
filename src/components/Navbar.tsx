@@ -30,7 +30,7 @@ const Navbar = () => {
   const isHomePage = activeTab === "/" || activeTab === "/home-page";
 
   // Set the appropriate background classes based on the route.
-  const navbarBgClass = isHomePage ? "bg-blue-gradient" : "bg-[#0B0D10]";
+  const navbarBgClass = isHomePage ? "bg-[#000]" : "bg-[#000]";
 
   return (
     <nav className={navbarBgClass}>
@@ -48,7 +48,7 @@ const Navbar = () => {
         />
 
         {/* Desktop Menu */}
-        <ul className="hidden sm:flex space-x-6">
+        <ul className="hidden sm:flex items-center space-x-6">
           {routes.map((route) => (
             <li key={route.path}>
               <Link
@@ -65,6 +65,12 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+
+          <Link href="https://glorizen.gitbook.io/docs">
+            <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
+              White Paper
+            </Button>
+          </Link>
         </ul>
       </div>
 

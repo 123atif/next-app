@@ -124,14 +124,14 @@ const SideBar = () => {
 
         {/* Right Content Area */}
         <div className="lg:w-2/3 flex flex-col items-center">
-          <div className="relative w-full max-w-md">
+          {/* <div className="relative w-full max-w-md">
             <Image
               src={iphone}
               alt="iPhone"
               className="w-full h-auto"
               priority
             />
-          </div>
+          </div> */}
 
           <AnimatePresence mode="wait">
             <motion.div
