@@ -3,7 +3,7 @@ import BackgroundVideo from "@/components/BackgroundVideo";
 // import MarqueeBrands from "@/components/Marquee";
 import Navbar from "@/components/Navbar";
 // import Image from "next/image";
-import SideBar from "@/components/SideBar";
+// import SideBar from "@/components/SideBar";
 import Image from "next/image";
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         <Navbar />
       </nav>
 
-      <div className="relative h-[75vh] md:h-[100vh]">
+      <div className="relative h-[100vh]">
         <div className="absolute inset-0">
           <BackgroundVideo />
         </div>
@@ -36,7 +36,7 @@ export default function Home() {
       {/* <div className="relative ">
         <MarqueeBrands />
       </div> */}
-      <SideBar />
+      {/* <SideBar /> */}
     </>
   );
 }

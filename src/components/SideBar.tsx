@@ -1,9 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-// import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-// import iphone from "../../public/iphone.svg";
 import { AiOutlineStock } from "react-icons/ai";
 import { FaFantasyFlightGames } from "react-icons/fa";
 import { RiNftLine } from "react-icons/ri";
@@ -84,71 +82,63 @@ const SideBar = () => {
 
   // Reset isNavigating state when the component mounts or the page is reloaded
   useEffect(() => {
-    setIsNavigating(false); // Reset the state
+    setIsNavigating(false);
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex flex-col lg:flex-row gap-8">
-        <div className="lg:w-1/3 space-y-4 font-mono text-xl">
+    <div className="mx-auto px-2 py-4">
+      <div className="flex flex-col lg:flex-row gap-4">
+        {/* Left column: Module list */}
+        <div className="lg:w-1/3 space-y-2 font-mono text-sm">
           {modules.map((module) => (
             <Link key={module.id} href={module.id} passHref legacyBehavior>
               <a
                 onClick={(e) => handleModuleSelect(module, e)}
-                className={`w-full flex items-center space-x-2 p-4 rounded-lg transition-all duration-300 ${
+                className={`w-full flex items-center space-x-2 p-2 rounded-lg transition-all duration-300 ${
                   selectedModule.id === module.id
-                    ? "text-[#FFD700] shadow-lg"
-                    : "hover:bg-gray-900"
+                    ? "text-[#FFD700] shadow-md"
+                    : "hover:bg-gray-950"
                 } ${
                   isNavigating
                     ? "opacity-75 cursor-not-allowed"
                     : "cursor-pointer"
                 }`}
               >
-                <span className="text-xl">{module.icon}</span>
+                <span className="text-base">{module.icon}</span>
                 <span className="flex-1 text-left font-medium">
                   {module.title}
                 </span>
               </a>
             </Link>
           ))}
-          <div className="space-y-4 p-4">
-            <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
+          <div className="p-2">
+            <Button className="bg-white text-black hover:bg-gray-500 duration-300 text-sm">
               White Paper
             </Button>
           </div>
         </div>
 
-        {/* Right Content Area */}
-        <div className="lg:w-2/3 flex flex-col items-center">
-          {/* <div className="relative w-full max-w-md">
-            <Image
-              src={iphone}
-              alt="iPhone"
-              className="w-full h-auto"
-              priority
-            />
-          </div> */}
-
+        {/* Right column: Module details */}
+        <div className="lg:w-2/3 flex flex-col items-start">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedModule.id + (isNavigating ? "-navigating" : "")}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="mt-8 text-center"
+              className="mt-2 text-left"
             >
               <motion.h2
-                className="text-2xl font-bold text-[#FFD700] mb-4"
+                className="text-base font-bold text-[#FFD700] mb-1"
                 layout
               >
                 {selectedModule.title}
               </motion.h2>
-              <motion.p className="text-lg max-w-2xl font-serif" layout>
+              <motion.p className="text-xs font-serif leading-tight" layout>
                 {selectedModule.description}
               </motion.p>
             </motion.div>
