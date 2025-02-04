@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo-2.svg";
 import menu from "../../public/menu.svg";
+import module from "../../public/module-menu.svg";
 import { MobileMenuroutes, routes } from "@/data";
 import { Button } from "./ui/button";
 import SideBar from "./SideBar"; // Import your SideBar component
@@ -46,16 +47,16 @@ const Navbar = () => {
           <div className="cursor-pointer">
             <Image src={logo} alt="logo" width={150} height={150} />
           </div>
-
-          <Image
-            src={menu}
-            alt="menu"
-            width={30}
-            height={30}
-            className="sm:hidden bg-white rounded-full cursor-pointer"
-            onClick={openSidebar}
-          />
-
+          <div className=" flex items-end justify-end">
+            <Image
+              src={menu}
+              alt="menu"
+              width={30}
+              height={30}
+              className="sm:hidden bg-white rounded-full cursor-pointer "
+              onClick={setIsOpen}
+            />
+          </div>
           {/* Desktop Menu */}
           <ul className="hidden sm:flex items-center space-x-6">
             {routes.map((route) => (
@@ -80,15 +81,17 @@ const Navbar = () => {
                 White Paper
               </Button>
             </Link>
+          </ul>
+          <div className=" ">
             <Image
-              src={menu}
+              src={module}
               alt="menu"
               width={30}
               height={30}
-              className="bg-blue-600 rounded-full cursor-pointer "
+              className="bg-gray-700 rounded-full cursor-pointer "
               onClick={openSidebar}
             />
-          </ul>
+          </div>
         </div>
 
         {/* Mobile Menu */}
