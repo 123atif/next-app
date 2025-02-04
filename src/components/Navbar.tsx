@@ -171,7 +171,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="w-96 bg-gray-800 p-4 overflow-y-auto"
+              className="w-72 bg-black p-4 overflow-y-auto"
             >
               <SideBar />
             </motion.div>

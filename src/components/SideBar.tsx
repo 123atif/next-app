@@ -1,14 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlineStock } from "react-icons/ai";
 import { FaFantasyFlightGames } from "react-icons/fa";
 import { RiNftLine } from "react-icons/ri";
 import { LiaGiftsSolid } from "react-icons/lia";
 import { RiUserCommunityFill } from "react-icons/ri";
 import { IoWalletOutline } from "react-icons/io5";
-import { Button } from "./ui/button";
+// import { Button } from "./ui/button";
 
 interface ModuleType {
   id: string;
@@ -75,9 +75,9 @@ const SideBar = () => {
     setSelectedModule(module);
     setIsNavigating(true);
 
-    timeoutRef.current = window.setTimeout(() => {
-      window.location.href = module.id;
-    }, 2000);
+    // timeoutRef.current = window.setTimeout(() => {
+    window.location.href = module.id;
+    // }, 2000);
   };
 
   // Reset isNavigating state when the component mounts or the page is reloaded
@@ -90,9 +90,9 @@ const SideBar = () => {
 
   return (
     <div className="mx-auto px-2 py-4">
-      <div className="flex flex-col lg:flex-row gap-4">
+      <div className="">
         {/* Left column: Module list */}
-        <div className="lg:w-1/3 space-y-2 font-mono text-sm">
+        <div className="space-y-2 font-mono text-sm">
           {modules.map((module) => (
             <Link key={module.id} href={module.id} passHref legacyBehavior>
               <a
@@ -114,15 +114,15 @@ const SideBar = () => {
               </a>
             </Link>
           ))}
-          <div className="p-2">
+          {/* <div className="p-2">
             <Button className="bg-white text-black hover:bg-gray-500 duration-300 text-sm">
               White Paper
             </Button>
-          </div>
+          </div> */}
         </div>
 
         {/* Right column: Module details */}
-        <div className="lg:w-2/3 flex flex-col items-start">
+        {/* <div className="lg:w-2/3 flex flex-col items-start">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedModule.id + (isNavigating ? "-navigating" : "")}
@@ -143,7 +143,7 @@ const SideBar = () => {
               </motion.p>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </div> */}
       </div>
     </div>
   );
