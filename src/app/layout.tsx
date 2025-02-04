@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Glorizen",
-  description: "A Multimodule Sports Ecosystem Powered by SGZELN",
+  title: "Glorizen – where sports, technology, and innovation meet",
+  description:
+    "Glorizen – where sports, technology, and innovation meet Compete, trade, and earn in the ultimate blockchain-powered platform.",
 };
 
 export default function RootLayout({
