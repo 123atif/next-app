@@ -1,17 +1,15 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import BackgroundGradient from "@/components/BackgroundGradient";
 import BackgroundVideo from "@/components/BackgroundVideo";
-// import MarqueeBrands from "@/components/Marquee";
 import Navbar from "@/components/Navbar";
+import ModuleCards from "@/components/ModuleCards";
+import StakeRewards from "@/components/_components/StakeRewards";
 import Title from "@/components/Title";
 import { Button } from "@/components/ui/button";
-import { emails, socialMedia } from "@/data";
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { FaEnvelopeOpen } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
-import ModuleCards from "@/components/ModuleCards";
+import { emails, socialMedia } from "@/data";
+import SideBar from "@/components/SideBar";
 import player1 from "../../public/player-1.png";
 import player2 from "../../public/player-2.png";
 import player3 from "../../public/player-3.png";
@@ -22,16 +20,39 @@ import card1 from "../../public/card-1.svg";
 import card2 from "../../public/card-2.svg";
 import card4 from "../../public/card-4.svg";
 import card5 from "../../public/card-5.svg";
-export default function Home() {
-  const playerCards = [player1, player2, player3, player4, player5, player6];
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { FaEnvelopeOpen } from "react-icons/fa";
+import CommunityVip from "@/components/_components/CommunityVip";
 
+export default function Home() {
+  const [currentModule, setCurrentModule] = useState<string>("default");
+
+  const handleModuleChange = (moduleId) => {
+    setCurrentModule(moduleId);
+  };
+
+  const playerCards = [player1, player2, player3, player4, player5, player6];
   const teamCards = [card1, card2, card4, card5];
 
+  const renderModuleContent = () => {
+    switch (currentModule) {
+      case "/staking-rewards":
+        return <StakeRewards />;
+      case "/community-engagement":
+        return <CommunityVip />;
+      default:
+        return <ModuleCards playerCards={playerCards} teamCards={teamCards} />;
+    }
+  };
+
+  // (Optional) If you need to toggle some text, you can use this state.
   const [showText, setShowText] = useState(false);
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setShowText(false);
     }, 2000);
+    return () => clearTimeout(timeout);
   }, [showText]);
 
   return (
@@ -40,13 +61,14 @@ export default function Home() {
         <Navbar />
       </nav>
 
+      {/* Home Section */}
       <section id="home">
         <div className="relative h-[100vh]">
           <div className="absolute inset-0">
             <BackgroundVideo />
           </div>
           <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="font-serif font-medium text-white text-[15px] text-center  text-glow z-10 px-4 md:text-4xl sm:text-2xl">
+            <div className="font-serif font-medium text-white text-[15px] text-center text-glow z-10 px-4 md:text-4xl sm:text-2xl">
               A Multimodule Sports Ecosystem Powered by $GLZEN
             </div>
             <div className="relative w-full max-w-md mt-6 mx-auto">
@@ -63,42 +85,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Modules Section */}
       <section id="modules-page">
         <BackgroundGradient>
-<<<<<<< HEAD
-          <div>
-=======
-          <div className="min-h-screen ">
-            {/* */}
->>>>>>> 703c7b31267d0094a70350a229db751b17bbc65e
-            <Title
-              text="Modules"
-              className="text-center  pt-10 md:pt-28 text-[24px] md:text-[50px]"
-            />
-<<<<<<< HEAD
-            {/* <div className="flex justify-center pt-10">
-              <Image
-                alt="image"
-                src="/images/mod-1.jpg"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="w-full h-auto max-w-3xl rounded-lg"
+          <div className="min-h-screen flex">
+            {/* Sidebar Column */}
+            <div className="w-1/4">
+              <SideBar onSelectModule={handleModuleChange} />
+            </div>
+            {/* Main Module Content Column */}
+            <div className="w-3/4 p-4">
+              <Title
+                text="Modules"
+                className="text-center pt-10 md:pt-28 text-[24px] md:text-[50px]"
               />
-            </div> */}
-            <ModuleCards playerCards={playerCards} teamCards={teamCards} />
-=======
-            {/* <div className="flex justify-center ">
-            <Image
-              alt="image"
-              src="/images/mod-2.jpg"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-auto  rounded-lg"
-            />
-          </div> */}
->>>>>>> 703c7b31267d0094a70350a229db751b17bbc65e
+              {renderModuleContent()}
+            </div>
           </div>
         </BackgroundGradient>
       </section>
