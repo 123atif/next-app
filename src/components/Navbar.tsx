@@ -9,17 +9,20 @@ import { MobileMenuroutes, routes } from "@/data";
 import { Button } from "./ui/button";
 import SideBar from "./SideBar";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [activeTab, setActiveTab] = useState("/");
-  useEffect(() => {
-    setActiveTab(window.location.pathname);
-    const handlePopState = () => setActiveTab(window.location.pathname);
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, []);
+  const [activeTab, setActiveTab] = useState("/home");
+
+  // useEffect(() => {
+  //   setActiveTab(window.location.pathname);
+  //   const handlePopState = () => setActiveTab(window.location.pathname);
+  //   window.addEventListener("popstate", handlePopState);
+  //   return () => window.removeEventListener("popstate", handlePopState);
+  // }, []);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const openSidebar = () => setShowSidebar(true);
@@ -27,6 +30,39 @@ const Navbar = () => {
 
   const isHomePage = activeTab === "/" || activeTab === "/home-page";
   const navbarBgClass = isHomePage ? "bg-[#000]" : "bg-[#000]";
+
+  const handleSmoothScroll = (
+    event: React.MouseEvent,
+    targetId: string,
+    path: string
+  ) => {
+    event.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveTab(path);
+    }
+  };
+
+  useEffect(() => {
+    const sectionIds = routes.map((route) => route.path.slice(1));
+
+    const handleScroll = () => {
+      for (let id of sectionIds) {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 100) {
+            setActiveTab(`/${id}`);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -53,7 +89,10 @@ const Navbar = () => {
                 <li key={route.path}>
                   <Link
                     href={route.path}
-                    onClick={() => setActiveTab(route.path)}
+                    // onClick={() => setActiveTab(route.path)}
+                    onClick={(e) =>
+                      handleSmoothScroll(e, route.path.slice(1), route.path)
+                    }
                     className={`relative after:absolute after:left-0 after:bottom-[-0.5rem] after:h-1 after:bg-yellow-500 after:transition-all after:duration-300 
                       ${
                         activeTab === route.path

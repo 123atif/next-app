@@ -11,12 +11,12 @@ body {
 
 ::-webkit-scrollbar {
   width: 8px;
-  background: white;
+  background: #000;
 }
 
 /* Style the scrollbar handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #05012d;
   border-radius: 10px;
 }
 

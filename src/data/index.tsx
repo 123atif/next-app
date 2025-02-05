@@ -2,9 +2,13 @@ import { SiBasicattentiontoken } from "react-icons/si";
 import { RiContactsBook3Fill } from "react-icons/ri";
 import { IoMdGrid } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
+import { CiLinkedin } from "react-icons/ci";
+import { FaTelegram } from "react-icons/fa";
+import { FaEnvelopeOpen } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 export const routes = [
-  { name: "Home", path: "/" },
+  { name: "Home", path: "/home" },
   { name: "Modules", path: "/modules-page" },
   { name: "Tokenomics", path: "/tokenomics" },
   { name: "Contact Us", path: "/contact-us" },
@@ -80,4 +84,17 @@ export const sportTabs = [
   "Basketball",
   "Baseball",
 ];
+
+export const socialMedia = [
+  { icon: <FaSquareXTwitter className="text-[#1DA1F2]" />, href: "#" },
+  { icon: <CiLinkedin className="text-[#0077B5]" />, href: "#" },
+  { icon: <FaTelegram className="text-[#0088CC]" />, href: "#" },
+];
+
+export const emails = [
+  "support@glorizen.io",
+  "investors@glorizen.io",
+  "partners@glorizen.io",
+];
+
 export const marketTabs = ["MarketPlace", "Auctions"];
