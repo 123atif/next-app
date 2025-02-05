@@ -46,73 +46,86 @@ export default function Home() {
 
       <section id="modules-page">
         <BackgroundGradient>
-          <div className="min-h-screen">
+          <div className="min-h-screen ">
+            {/* */}
             <Title
               text="Modules"
-              className="text-center pt-28 text-[24px] md:text-[50px]"
+              className="text-center  pt-10 md:pt-28 text-[24px] md:text-[50px]"
             />
-            <div className="flex justify-center pt-10">
-              <Image
-                alt="image"
-                src="/images/mod-1.jpg"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="w-full h-auto max-w-3xl rounded-lg"
-              />
-            </div>
+            {/* <div className="flex justify-center ">
+            <Image
+              alt="image"
+              src="/images/mod-2.jpg"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-auto  rounded-lg"
+            />
+          </div> */}
           </div>
         </BackgroundGradient>
       </section>
 
       <section id="tokenomics">
         <BackgroundGradient>
-          <div className="min-h-screen flex flex-col">
+          <div className="min-h-auto md:min-h-screen flex flex-col">
             <Title
               text="GLZEN Tokenomics"
-              className="text-center pt-28 text-[24px] md:text-[50px]"
+              className="text-center pt-10 md:pt-28 text-[24px] md:text-[50px]"
             />
-
-            <div className="flex-grow flex flex-col justify-end px-4 pb-10">
-              <div className="mb-4">
-                <AnimatePresence>
-                  {showText && (
-                    <motion.p
-                      initial={{ opacity: 0, rotateX: -90 }}
-                      animate={{ opacity: 1, rotateX: 0 }}
-                      exit={{ opacity: 0, rotateX: 90 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-gray-400 text-sm text-center"
-                    >
-                      Available soon with the beta launch
-                    </motion.p>
-                  )}
-                </AnimatePresence>
+            <div>
+              <div className="flex justify-center pb-10">
+                <Image
+                  alt="image"
+                  src="/svg/token-supply.svg"
+                  width={0}
+                  height={0}
+                  // sizes="100vw"
+                  className="w-full max-w-[90%] h-auto  rounded-lg"
+                />
               </div>
 
-              <motion.div className="flex justify-between w-full space-x-4">
-                <div className="flex flex-col items-center">
-                  <Button
-                    className="bg-[#00FF00] text-black transform transition-transform hover:scale-105"
-                    onClick={() => setShowText(!showText)}
-                  >
-                    Buy GLZEN
-                  </Button>
-                  <p className="text-gray-500 text-xs mt-1">
-                    (Use Crypto Wallet)
-                  </p>
+              <div className="flex-grow flex flex-col justify-end px-4 pb-10">
+                <div className="mb-4">
+                  <AnimatePresence>
+                    {showText && (
+                      <motion.p
+                        initial={{ opacity: 0, rotateX: -90 }}
+                        animate={{ opacity: 1, rotateX: 0 }}
+                        exit={{ opacity: 0, rotateX: 90 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-gray-400 text-sm text-center"
+                      >
+                        Available soon with the beta launch
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <Button
-                    className="bg-[#00FF00] text-black transform transition-transform hover:scale-105"
-                    onClick={() => setShowText(!showText)}
-                  >
-                    Buy GLZEN
-                  </Button>
-                  <p className="text-gray-500 text-xs mt-1">(Use Card)</p>
-                </div>
-              </motion.div>
+                <motion.div className="flex justify-between w-full space-x-4">
+                  <div className="flex flex-col items-center">
+                    <Button
+                      className="bg-[#00FF00] text-black transform transition-transform hover:scale-105"
+                      onClick={() => setShowText(!showText)}
+                    >
+                      Buy GLZEN
+                    </Button>
+                    <p className="text-gray-500 text-xs mt-1">
+                      (Use Crypto Wallet)
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col items-center">
+                    <Button
+                      className="bg-[#00FF00] text-black transform transition-transform hover:scale-105"
+                      onClick={() => setShowText(!showText)}
+                    >
+                      Buy GLZEN
+                    </Button>
+                    <p className="text-gray-500 text-xs mt-1">(Use Card)</p>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </BackgroundGradient>
