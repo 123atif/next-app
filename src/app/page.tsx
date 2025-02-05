@@ -11,8 +11,22 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-
+import ModuleCards from "@/components/ModuleCards";
+import player1 from "../../public/player-1.png";
+import player2 from "../../public/player-2.png";
+import player3 from "../../public/player-3.png";
+import player4 from "../../public/player-4.png";
+import player5 from "../../public/player-5.png";
+import player6 from "../../public/player-7.png";
+import card1 from "../../public/card-1.svg";
+import card2 from "../../public/card-2.svg";
+import card4 from "../../public/card-4.svg";
+import card5 from "../../public/card-5.svg";
 export default function Home() {
+  const playerCards = [player1, player2, player3, player4, player5, player6];
+
+  const teamCards = [card1, card2, card4, card5];
+
   const [showText, setShowText] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -51,12 +65,12 @@ export default function Home() {
 
       <section id="modules-page">
         <BackgroundGradient>
-          <div className="min-h-screen">
+          <div>
             <Title
               text="Modules"
               className="text-center pt-28 text-[24px] md:text-[50px]"
             />
-            <div className="flex justify-center pt-10">
+            {/* <div className="flex justify-center pt-10">
               <Image
                 alt="image"
                 src="/images/mod-1.jpg"
@@ -65,7 +79,8 @@ export default function Home() {
                 sizes="100vw"
                 className="w-full h-auto max-w-3xl rounded-lg"
               />
-            </div>
+            </div> */}
+            <ModuleCards playerCards={playerCards} teamCards={teamCards} />
           </div>
         </BackgroundGradient>
       </section>

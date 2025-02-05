@@ -10,7 +10,7 @@ const BackgroundGradient: React.FC<BackgroundGradientProps> = ({
   children,
 }) => {
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-full">
       <div className="absolute inset-0 -z-10">
         <Image
           src={gradient}
