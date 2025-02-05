@@ -72,19 +72,28 @@ const Navbar = () => {
             <Image src={logo} alt="logo" width={150} height={150} />
           </div>
           <div className="flex items-end justify-end">
-            <Image
+            {/* <Image
               src={menu}
               alt="menu"
               width={30}
               height={30}
               className="sm:hidden bg-white rounded-full cursor-pointer"
               onClick={toggleMenu}
-            />
+            /> */}
+
+            <Link
+              href="https://glorizen.gitbook.io/docs"
+              className="block md:hidden"
+            >
+              <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
+                White Paper
+              </Button>
+            </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="sm:flex gap-7">
-            <ul className="hidden sm:flex items-center space-x-6">
+            <ul className="hidden md:flex items-center space-x-6">
               {routes.map((route) => (
                 <li key={route.path}>
                   <Link
@@ -113,14 +122,37 @@ const Navbar = () => {
             </ul>
 
             <Image
-              src={module}
+              src={menu}
               alt="menu"
               width={40}
               height={30}
-              className="bg-gray-700 hover:bg-gray-600 transition duration-300 rounded-full cursor-pointer"
+              className="bg-[#05012d] hover:bg-[#05012d] transition duration-300 rounded-full cursor-pointer"
               onClick={openSidebar}
             />
           </div>
+        </div>
+        <div className="px-4 pb-3 block md:hidden">
+          <ul className="flex items-center justify-center space-x-6">
+            {routes.map((route) => (
+              <li key={route.path}>
+                <Link
+                  href={route.path}
+                  // onClick={() => setActiveTab(route.path)}
+                  onClick={(e) =>
+                    handleSmoothScroll(e, route.path.slice(1), route.path)
+                  }
+                  className={`relative after:absolute after:left-0 after:bottom-[-0.5rem] after:h-1 after:bg-yellow-500 after:transition-all after:duration-300 
+                      ${
+                        activeTab === route.path
+                          ? "after:w-full text-yellow-500"
+                          : "after:w-0 hover:after:w-full"
+                      }`}
+                >
+                  {route.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Mobile Menu */}
