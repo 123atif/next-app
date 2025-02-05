@@ -9,21 +9,16 @@ import { MobileMenuroutes, routes } from "@/data";
 import { Button } from "./ui/button";
 import SideBar from "./SideBar";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  // activeTab holds the path of the current section; defaulting to "/home"
   const [activeTab, setActiveTab] = useState("/home");
 
-  // useEffect(() => {
-  //   setActiveTab(window.location.pathname);
-  //   const handlePopState = () => setActiveTab(window.location.pathname);
-  //   window.addEventListener("popstate", handlePopState);
-  //   return () => window.removeEventListener("popstate", handlePopState);
-  // }, []);
-
+  // Toggle functions
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const openSidebar = () => setShowSidebar(true);
   const closeSidebar = () => setShowSidebar(false);
@@ -31,6 +26,7 @@ const Navbar = () => {
   const isHomePage = activeTab === "/" || activeTab === "/home-page";
   const navbarBgClass = isHomePage ? "bg-[#000]" : "bg-[#000]";
 
+  // Smooth scroll function (shared by both desktop and mobile)
   const handleSmoothScroll = (
     event: React.MouseEvent,
     targetId: string,
@@ -44,6 +40,7 @@ const Navbar = () => {
     }
   };
 
+  // Scroll listener: finds the active section based on element positions
   useEffect(() => {
     const sectionIds = routes.map((route) => route.path.slice(1));
 
@@ -89,7 +86,6 @@ const Navbar = () => {
                 <li key={route.path}>
                   <Link
                     href={route.path}
-                    // onClick={() => setActiveTab(route.path)}
                     onClick={(e) =>
                       handleSmoothScroll(e, route.path.slice(1), route.path)
                     }
@@ -104,7 +100,6 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-
               <Link href="https://glorizen.gitbook.io/docs">
                 <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
                   White Paper
@@ -145,8 +140,8 @@ const Navbar = () => {
               <li key={route.path}>
                 <Link
                   href={route.path}
-                  onClick={() => {
-                    setActiveTab(route.path);
+                  onClick={(e) => {
+                    handleSmoothScroll(e, route.path.slice(1), route.path);
                     toggleMenu();
                   }}
                   className={`block text-white relative 
@@ -197,6 +192,13 @@ const Navbar = () => {
               className="w-72 bg-black p-4 overflow-y-auto"
             >
               <SideBar />
+              <div className="mt-4">
+                <Link href="https://glorizen.gitbook.io/docs">
+                  <Button className="w-full bg-white text-black hover:bg-gray-500 duration-300">
+                    White Paper
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         )}
