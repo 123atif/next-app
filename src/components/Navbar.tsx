@@ -90,8 +90,8 @@ const Navbar = () => {
               onClick={(e) => handleSmoothScroll(e, "home", "/home")}
             />
           </div>
-          <div className="flex items-end justify-end">
-            {/* <Image
+          {/* <div className="flex items-end justify-end"> */}
+          {/* <Image
               src={menu}
               alt="menu"
               width={30}
@@ -99,53 +99,55 @@ const Navbar = () => {
               className="sm:hidden bg-white rounded-full cursor-pointer"
               onClick={toggleMenu}
             /> */}
-
+          <div className="flex justify-end gap-5">
             <Link
               href="https://glorizen.gitbook.io/docs"
               className="block md:hidden"
             >
-              <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
+              <Button className="bg-white text-black hover:bg-gray-500 duration-300">
                 White Paper
               </Button>
             </Link>
-          </div>
 
-          {/* Desktop Menu */}
-          <div className="sm:flex gap-7">
-            <ul className="hidden md:flex items-center space-x-6">
-              {routes.map((route) => (
-                <li key={route.path}>
-                  <Link
-                    href={route.path}
-                    onClick={(e) =>
-                      handleSmoothScroll(e, route.path.slice(1), route.path)
-                    }
-                    className={`relative after:absolute after:left-0 after:bottom-[-0.5rem] after:h-1 after:bg-yellow-500 after:transition-all after:duration-300 
+            {/* </div> */}
+
+            {/* Desktop Menu */}
+            <div className="sm:flex gap-7 ">
+              <ul className="hidden md:flex items-center space-x-6">
+                {routes.map((route) => (
+                  <li key={route.path}>
+                    <Link
+                      href={route.path}
+                      onClick={(e) =>
+                        handleSmoothScroll(e, route.path.slice(1), route.path)
+                      }
+                      className={`relative after:absolute after:left-0 after:bottom-[-0.5rem] after:h-1 after:bg-yellow-500 after:transition-all after:duration-300 
                       ${
                         activeTab === route.path
                           ? "after:w-full text-yellow-500"
                           : "after:w-0 hover:after:w-full"
                       }`}
-                  >
-                    {route.name}
-                  </Link>
-                </li>
-              ))}
-              <Link href="https://glorizen.gitbook.io/docs">
-                <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block">
-                  White Paper
-                </Button>
-              </Link>
-            </ul>
+                    >
+                      {route.name}
+                    </Link>
+                  </li>
+                ))}
 
-            <Image
-              src={menu}
-              alt="menu"
-              width={40}
-              height={30}
-              className="bg-[#2f1aff] hover:opacity-85 transition duration-300 rounded-full cursor-pointer"
-              onClick={openSidebar}
-            />
+                <Link href="https://glorizen.gitbook.io/docs">
+                  <Button className="bg-white text-black hover:bg-gray-500 duration-300 md:block ">
+                    White Paper
+                  </Button>
+                </Link>
+              </ul>
+              <Image
+                src={menu}
+                alt="menu"
+                width={40}
+                height={30}
+                className="bg-[#2f1aff] hover:opacity-85 transition duration-300 rounded-full cursor-pointer"
+                onClick={openSidebar}
+              />
+            </div>
           </div>
         </div>
         <div className="px-4 pb-3 block md:hidden">
