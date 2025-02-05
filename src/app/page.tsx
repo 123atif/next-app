@@ -65,17 +65,12 @@ export default function Home() {
 
       <section id="modules-page">
         <BackgroundGradient>
-<<<<<<< HEAD
-          <div>
-=======
           <div className="min-h-screen ">
             {/* */}
->>>>>>> 703c7b31267d0094a70350a229db751b17bbc65e
             <Title
               text="Modules"
               className="text-center  pt-10 md:pt-28 text-[24px] md:text-[50px]"
             />
-<<<<<<< HEAD
             {/* <div className="flex justify-center pt-10">
               <Image
                 alt="image"
@@ -87,18 +82,6 @@ export default function Home() {
               />
             </div> */}
             <ModuleCards playerCards={playerCards} teamCards={teamCards} />
-=======
-            {/* <div className="flex justify-center ">
-            <Image
-              alt="image"
-              src="/images/mod-2.jpg"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-auto  rounded-lg"
-            />
-          </div> */}
->>>>>>> 703c7b31267d0094a70350a229db751b17bbc65e
           </div>
         </BackgroundGradient>
       </section>
