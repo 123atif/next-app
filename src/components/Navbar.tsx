@@ -82,7 +82,13 @@ const Navbar = () => {
       <nav className={navbarBgClass}>
         <div className="mx-auto flex items-center justify-between p-4">
           <div className="cursor-pointer">
-            <Image src={logo} alt="logo" width={150} height={150} />
+            <Image
+              src={logo}
+              alt="logo"
+              width={150}
+              height={150}
+              onClick={(e) => handleSmoothScroll(e, "home", "/home")}
+            />
           </div>
           <div className="flex items-end justify-end">
             {/* <Image
