@@ -8,8 +8,13 @@ import { Button } from "@/components/ui/button";
 import { emails, socialMedia } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { FaEnvelopeOpen } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+
 export default function Home() {
+  const [showText, setShowText] = useState(false);
+
   return (
     <>
       <nav className="fixed w-full top-0 z-50">
@@ -62,34 +67,52 @@ export default function Home() {
 
       <section id="tokenomics">
         <BackgroundGradient>
-          <div className="min-h-screen">
-            <div>
-              <Title
-                text="GLZEN Tokenomics"
-                className="text-center pt-28 text-[24px] md:text-[50px]"
-              />
-            </div>
-          </div>
-          <div className="px-4 py-10">
-            {/* <Button className="bg-[#00FF00] text-black">Buy GLZEN</Button> */}
-            <div className="flex flex-col items-center space-y-2 mt-4">
-              <p className="text-gray-400 text-sm">
-                Available soon with the beta launch
-              </p>
+          <div className="min-h-screen flex flex-col">
+            <Title
+              text="GLZEN Tokenomics"
+              className="text-center pt-28 text-[24px] md:text-[50px]"
+            />
 
-              <div className="flex justify-between w-full space-x-4">
+            <div className="flex-grow flex flex-col justify-end px-4 pb-10">
+              <div className="mb-4">
+                <AnimatePresence>
+                  {showText && (
+                    <motion.p
+                      initial={{ opacity: 0, rotateX: -90 }}
+                      animate={{ opacity: 1, rotateX: 0 }}
+                      exit={{ opacity: 0, rotateX: 90 }}
+                      transition={{ duration: 0.5 }}
+                      className="text-gray-400 text-sm text-center"
+                    >
+                      Available soon with the beta launch
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <motion.div className="flex justify-between w-full space-x-4">
                 <div className="flex flex-col items-center">
-                  <Button className="bg-[#00FF00] text-black">Buy GLZEN</Button>
+                  <Button
+                    className="bg-[#00FF00] text-black transform transition-transform hover:scale-105"
+                    onClick={() => setShowText(!showText)}
+                  >
+                    Buy GLZEN
+                  </Button>
                   <p className="text-gray-500 text-xs mt-1">
                     (Use Crypto Wallet)
                   </p>
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <Button className="bg-[#00FF00] text-black">Buy GLZEN</Button>
+                  <Button
+                    className="bg-[#00FF00] text-black transform transition-transform hover:scale-105"
+                    onClick={() => setShowText(!showText)}
+                  >
+                    Buy GLZEN
+                  </Button>
                   <p className="text-gray-500 text-xs mt-1">(Use Card)</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </BackgroundGradient>

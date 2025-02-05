@@ -246,13 +246,7 @@ const Navbar = () => {
               className="w-72 bg-black p-4 overflow-y-auto"
             >
               <SideBar />
-              <div className="mt-4">
-                <Link href="https://glorizen.gitbook.io/docs">
-                  <Button className="w-full bg-white text-black hover:bg-gray-500 duration-300">
-                    White Paper
-                  </Button>
-                </Link>
-              </div>
+              <div className="mt-4"></div>
             </motion.div>
           </div>
         )}
