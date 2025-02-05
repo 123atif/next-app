@@ -56,6 +56,16 @@ export default function Home() {
               text="Modules"
               className="text-center pt-28 text-[24px] md:text-[50px]"
             />
+            <div className="flex justify-center pt-10">
+              <Image
+                alt="image"
+                src="/images/mod-1.jpg"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-full h-auto max-w-3xl rounded-lg"
+              />
+            </div>
           </div>
         </BackgroundGradient>
       </section>
