@@ -8,12 +8,17 @@ import { Button } from "@/components/ui/button";
 import { emails, socialMedia } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [showText, setShowText] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowText(false);
+    }, 2000);
+  }, [showText]);
 
   return (
     <>
