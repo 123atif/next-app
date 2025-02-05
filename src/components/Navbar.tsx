@@ -9,16 +9,12 @@ import { MobileMenuroutes, routes } from "@/data";
 import { Button } from "./ui/button";
 import SideBar from "./SideBar";
 import { motion, AnimatePresence } from "framer-motion";
-// import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  // const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  // activeTab holds the path of the current section; defaulting to "/home"
   const [activeTab, setActiveTab] = useState("/home");
 
-  // Toggle functions
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const openSidebar = () => setShowSidebar(true);
   const closeSidebar = () => setShowSidebar(false);
@@ -26,7 +22,6 @@ const Navbar = () => {
   const isHomePage = activeTab === "/" || activeTab === "/home-page";
   const navbarBgClass = isHomePage ? "bg-[#000]" : "bg-[#000]";
 
-  // Smooth scroll function (shared by both desktop and mobile)
   const handleSmoothScroll = (
     event: React.MouseEvent,
     targetId: string,
@@ -35,29 +30,50 @@ const Navbar = () => {
     event.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      const navbarHeight = 70; // Adjust this value based on your navbar height
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
       setActiveTab(path);
     }
   };
 
-  // Scroll listener: finds the active section based on element positions
   useEffect(() => {
     const sectionIds = routes.map((route) => route.path.slice(1));
+    let ticking = false;
 
     const handleScroll = () => {
-      for (let id of sectionIds) {
-        const section = document.getElementById(id);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= window.innerHeight / 2 && rect.bottom >= 100) {
-            setActiveTab(`/${id}`);
-            break;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY + window.innerHeight * 0.2;
+
+          for (let id of sectionIds) {
+            const section = document.getElementById(id);
+            if (section) {
+              const sectionTop = section.offsetTop;
+              const sectionBottom = sectionTop + section.offsetHeight;
+
+              if (
+                scrollPosition >= sectionTop &&
+                scrollPosition <= sectionBottom
+              ) {
+                setActiveTab(`/${id}`);
+                break;
+              }
+            }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
