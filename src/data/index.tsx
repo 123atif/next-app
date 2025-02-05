@@ -4,7 +4,7 @@ import { IoMdGrid } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiLinkedin } from "react-icons/ci";
 import { FaTelegram } from "react-icons/fa";
-import { FaEnvelopeOpen } from "react-icons/fa";
+// import { FaEnvelopeOpen } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
 export const routes = [

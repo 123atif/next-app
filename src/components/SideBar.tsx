@@ -15,6 +15,7 @@ interface ModuleType {
   title: string;
   description: string;
   icon: React.ReactNode;
+  value: string;
 }
 
 const modules: ModuleType[] = [
@@ -23,41 +24,57 @@ const modules: ModuleType[] = [
     title: "Sports Stock Market",
     description: "Decentralized Sports Trading & Dividends",
     icon: <AiOutlineStock />,
+    value: "stock-market",
   },
   {
     id: "/nft-fantasy",
     title: "NFT Fantasy Game",
     description: "Play, Compete & Win with Digital Sports Cards",
     icon: <FaFantasyFlightGames />,
+    value: "nft-fantasy",
   },
   {
     id: "/nft-marketplace",
     title: "NFT Marketplace",
     description: "Trade Exclusive NFTs & Build Your Collection",
     icon: <RiNftLine />,
+    value: "marketplace",
   },
   {
     id: "/staking-rewards",
     title: "Staking & Rewards",
     description: "Earn Passive Income with Staking & Shares",
     icon: <LiaGiftsSolid />,
+    value: "staking-rewards",
   },
   {
     id: "/community-engagement",
     title: "Community Engagement",
     description: "Join the Elite: Exclusive Perks & Play-to-Earn",
     icon: <RiUserCommunityFill />,
+    value: "community",
   },
   {
     id: "/smart-wallet",
     title: "Smart Wallet & DApp",
     description: "Seamless Asset Management: GLZEN, NFTs & More",
     icon: <IoWalletOutline />,
+    value: "wallet",
   },
 ];
 
-const SideBar = () => {
-  const [selectedModule, setSelectedModule] = useState<ModuleType>(modules[0]);
+interface SideBarProps {
+  setModuleSection: (section: string) => void;
+  moduleSection: string;
+  closeSidebar: () => void;
+}
+
+const SideBar: React.FC<SideBarProps> = ({
+  setModuleSection,
+  moduleSection,
+  closeSidebar,
+}) => {
+  // const [selectedModule, setSelectedModule] = useState<ModuleType>(modules[0]);
   const [isNavigating, setIsNavigating] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
@@ -66,18 +83,21 @@ const SideBar = () => {
     e: React.MouseEvent<HTMLAnchorElement>
   ) => {
     e.preventDefault();
-    if (isNavigating) return;
+    // if (isNavigating) return;
 
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    // if (timeoutRef.current) {
+    //   clearTimeout(timeoutRef.current);
+    // }
 
-    setSelectedModule(module);
-    setIsNavigating(true);
+    // setSelectedModule(module);
+    // setIsNavigating(true);
 
     // timeoutRef.current = window.setTimeout(() => {
-    window.location.href = module.id;
+    // window.location.href = module.id;
     // }, 2000);
+
+    setModuleSection(module?.value);
+    closeSidebar();
   };
 
   // Reset isNavigating state when the component mounts or the page is reloaded
@@ -92,13 +112,14 @@ const SideBar = () => {
     <div className="mx-auto px-2 py-4">
       <div className="">
         {/* Left column: Module list */}
+        {/*  */}
         <div className="space-y-2 font-mono text-sm">
           {modules.map((module) => (
             <Link key={module.id} href={module.id} passHref legacyBehavior>
               <a
                 onClick={(e) => handleModuleSelect(module, e)}
                 className={`w-full flex items-center space-x-2 p-2 rounded-lg transition-all duration-300 ${
-                  selectedModule.id === module.id
+                  moduleSection === module.value
                     ? "text-[#FFD700] shadow-md"
                     : "hover:bg-gray-950"
                 } ${

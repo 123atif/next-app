@@ -4,13 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo-2.svg";
 import menu from "../../public/menu.svg";
-import module from "../../public/module-menu.svg";
+// import module from "../../public/module-menu.svg";
 import { MobileMenuroutes, routes } from "@/data";
 import { Button } from "./ui/button";
 import SideBar from "./SideBar";
 import { motion, AnimatePresence } from "framer-motion";
+interface NavbarProps {
+  moduleSection: string; // Current module section
+  setModuleSection: (section: string) => void; // Function to update module section
+}
 
-const Navbar = () => {
+const Navbar: React.FC<NavbarProps> = ({ moduleSection, setModuleSection }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [activeTab, setActiveTab] = useState("/home");
@@ -52,7 +56,7 @@ const Navbar = () => {
         window.requestAnimationFrame(() => {
           const scrollPosition = window.scrollY + window.innerHeight * 0.2;
 
-          for (let id of sectionIds) {
+          for (const id of sectionIds) {
             const section = document.getElementById(id);
             if (section) {
               const sectionTop = section.offsetTop;
@@ -247,7 +251,11 @@ const Navbar = () => {
               transition={{ duration: 0.3 }}
               className="w-72 bg-black p-4 overflow-y-auto"
             >
-              <SideBar />
+              <SideBar
+                moduleSection={moduleSection}
+                setModuleSection={setModuleSection}
+                closeSidebar={closeSidebar}
+              />
               <div className="mt-4"></div>
             </motion.div>
           </div>

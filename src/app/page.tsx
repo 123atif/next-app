@@ -11,23 +11,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import ModuleCards from "@/components/ModuleCards";
-import player1 from "../../public/svg/player-1.svg";
-import player2 from "../../public/svg/player-2.svg";
-import player3 from "../../public/svg/player-3.svg";
-import player4 from "../../public/svg/player-4.svg";
-import player5 from "../../public/svg/player-5.svg";
-import player6 from "../../public/svg/player-6.svg";
-import card1 from "../../public/card-1.svg";
-import card2 from "../../public/card-2.svg";
-import card4 from "../../public/card-4.svg";
-import card5 from "../../public/card-5.svg";
+// import ModuleCards from "@/components/ModuleCards";
+import Footer from "@/components/shared/Footer";
+import ModuleSection from "@/components/home/ModuleSection";
 export default function Home() {
-  const playerCards = [player1, player2, player3, player4, player5, player6];
-
-  const teamCards = [card1, card2, card4, card5];
-
   const [showText, setShowText] = useState(false);
+  const [moduleSection, setModuleSection] = useState("");
+
   useEffect(() => {
     setTimeout(() => {
       setShowText(false);
@@ -37,7 +27,10 @@ export default function Home() {
   return (
     <>
       <nav className="fixed w-full top-0 z-50">
-        <Navbar />
+        <Navbar
+          setModuleSection={setModuleSection}
+          moduleSection={moduleSection}
+        />
       </nav>
 
       <section id="home">
@@ -71,17 +64,22 @@ export default function Home() {
               text="Modules"
               className="text-center  pt-10 md:pt-28 text-[24px] md:text-[50px]"
             />
-            {/* <div className="flex justify-center pt-10">
-              <Image
-                alt="image"
-                src="/images/mod-1.jpg"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="w-full h-auto max-w-3xl rounded-lg"
-              />
-            </div> */}
-            <ModuleCards playerCards={playerCards} teamCards={teamCards} />
+            {moduleSection == "" && (
+              <div className="min-h-[80vh] flex flex-col justify-center items-center">
+                <div className="flex justify-center pt-10">
+                  <Image
+                    alt="image"
+                    src="/images/mod-1.jpg"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full h-auto rounded-lg"
+                  />
+                </div>
+              </div>
+            )}
+            {/* <ModuleCards playerCards={playerCards} teamCards={teamCards} /> */}
+            <ModuleSection moduleSection={moduleSection} />
           </div>
         </BackgroundGradient>
       </section>
@@ -156,7 +154,7 @@ export default function Home() {
             <div className="flex justify-center items-center pt-16">
               <Title
                 text="Play. Trade. Earn. Repeat."
-                className="text-center font-bold text-[24px] md:text-[50px] absolute top-[40%]"
+                className="text-center font-bold text-[30px] md:text-[50px] absolute top-[40%]"
               />
             </div>
             <div className="w-full px-4">
@@ -193,6 +191,7 @@ export default function Home() {
           </div>
         </BackgroundGradient>
       </section>
+      <Footer />
     </>
   );
 }
