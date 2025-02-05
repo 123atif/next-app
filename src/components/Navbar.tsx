@@ -121,7 +121,7 @@ const Navbar = () => {
               alt="menu"
               width={40}
               height={30}
-              className="bg-[#05012d] hover:bg-[#05012d] transition duration-300 rounded-full cursor-pointer"
+              className="bg-[#2f1aff] hover:opacity-85 transition duration-300 rounded-full cursor-pointer"
               onClick={openSidebar}
             />
           </div>
