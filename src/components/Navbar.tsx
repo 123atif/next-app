@@ -255,6 +255,7 @@ const Navbar: React.FC<NavbarProps> = ({ moduleSection, setModuleSection }) => {
                 moduleSection={moduleSection}
                 setModuleSection={setModuleSection}
                 closeSidebar={closeSidebar}
+                handleSmoothScroll={handleSmoothScroll}
               />
               <div className="mt-4"></div>
             </motion.div>

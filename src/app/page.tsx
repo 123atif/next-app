@@ -38,7 +38,7 @@ export default function Home() {
           <div className="absolute inset-0">
             <BackgroundVideo />
           </div>
-          <div className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="font-serif font-medium text-white text-[15px] text-center  text-glow z-10 px-4 md:text-4xl sm:text-2xl">
               A Multimodule Sports Ecosystem Powered by $GLZEN
             </div>

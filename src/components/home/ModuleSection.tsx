@@ -24,7 +24,10 @@ const ModuleSection: React.FC<ModuleSectionProps> = ({ moduleSection }) => {
       {moduleSection === "stock-market" && (
         <>
           <div className="max-w-4xl m-auto p-8">
-            <Title text="Real-World Team & Player Stocks with Earnings" />
+            <Title
+              text="Real-World Team & Player Stocks with Earnings"
+              className="text-center"
+            />
           </div>
 
           <AnimatePresence mode="wait">
@@ -107,7 +110,12 @@ const ModuleSection: React.FC<ModuleSectionProps> = ({ moduleSection }) => {
                   transition={{ type: "spring", stiffness: 300 }}
                   className="relative"
                 >
-                  <img src={img} alt={`Team Card ${index + 1}`} />
+                  <Image
+                    src={img}
+                    alt={`Team Card ${index + 1}`}
+                    width={400}
+                    height={400}
+                  />
                 </motion.div>
               ))}
             </motion.div>

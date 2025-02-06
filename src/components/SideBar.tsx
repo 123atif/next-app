@@ -67,12 +67,18 @@ interface SideBarProps {
   setModuleSection: (section: string) => void;
   moduleSection: string;
   closeSidebar: () => void;
+  handleSmoothScroll: (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+    url: string
+  ) => void;
 }
 
 const SideBar: React.FC<SideBarProps> = ({
   setModuleSection,
   moduleSection,
   closeSidebar,
+  handleSmoothScroll,
 }) => {
   // const [selectedModule, setSelectedModule] = useState<ModuleType>(modules[0]);
   const [isNavigating, setIsNavigating] = useState(false);
@@ -98,6 +104,7 @@ const SideBar: React.FC<SideBarProps> = ({
 
     setModuleSection(module?.value);
     closeSidebar();
+    handleSmoothScroll(e, "modules-page", "/modules-page");
   };
 
   // Reset isNavigating state when the component mounts or the page is reloaded
